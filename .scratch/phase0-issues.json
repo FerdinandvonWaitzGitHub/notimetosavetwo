@@ -1,0 +1,32 @@
+{
+  "phase0": {
+    "description": "Phase 0: Foundation - Repository setup and initial tracer bullet deployment",
+    "issues": [
+      {
+        "title": "[Tracer Bullet] Verify GitHub repository infrastructure is ready",
+        "labels": ["status/ready-for-agent", "type/setup", "scope/infrastructure"],
+        "body": "## Trace Path\n\nVerify that the repository has all required infrastructure files configured before implementation begins.\n\n## Test Assertion\n\n- [ ] `.github/ISSUE_TEMPLATE/` exists with at least 3 templates\n- [ ] `.github/labels.yml` defines all required triage labels\n- [ ] `.github/workflows/` contains CI workflow\n- [ ] Labels match the triage state machine from skill\n\n## Implementation Scope\n\n1. Create `.github/ISSUE_TEMPLATE/01-project-setup.md` with setup template\n2. Create `.github/ISSUE_TEMPLATE/02-tracer-bullet.md` with tracer bullet template\n3. Create `.github/ISSUE_TEMPLATE/03-feature.md` with feature template\n4. Create `.github/labels.yml` with triage state machine labels\n5. Create `.github/workflows/ci.yml` with minimal CI pipeline\n\n## Acceptance Criteria\n\n- [ ] All templates validate against markdown lint\n- [ ] All required labels defined\n- [ ] CI workflow runs without errors\n\n## Out of Scope\n\n- Detailed feature implementation\n- Complex workflows\n- Multi-stage pipelines"
+      },
+      {
+        "title": "[Tracer Bullet] Verify Docker compose stack starts successfully",
+        "labels": ["status/ready-for-agent", "type/tracer-bullet", "scope/infrastructure"],
+        "body": "## Trace Path\n\nCreate minimal docker-compose.yml that starts successfully and validates basic infrastructure.\n\n## Test Assertion\n\nRunning `docker compose up` completes without errors and shows expected container status.\n\n## Implementation Scope\n\n1. Create minimal `docker-compose.yml` with:\n   - postgres service (port 5432)\n   - Volume for data persistence\n   - Healthcheck on postgres\n2. Create minimal `.env` example with required variables\n3. Add `docker/` directory structure\n4. Verify startup with `docker compose config`\n\n## Acceptance Criteria\n\n- [ ] `docker compose config -q` validates successfully\n- [ ] `docker compose up -d` starts all services\n- [ ] `docker compose ps` shows healthy postgres\n\n## Out of Scope\n\n- Full NTTS stack implementation\n- All upstream services\n- Complex networking"
+      },
+      {
+        "title": "[Tracer Bullet] Implement minimal issue triage workflow\n",
+        "labels": ["status/ready-for-agent", "type/setup", "scope/testing"],
+        "body": "## Trace Path\n\nImplement minimal triage workflow using GitHub labels.\n\n## Test Assertion\n\nNew issues automatically receive `status/needs-triage` label.\n\n## Implementation Scope\n\n1. Create `.github/ISSUE_TEMPLATE/config.yml` with default template\n2. Add issue template selector\n3. Configure label automation\n4. Test with sample issue\n\n## Acceptance Criteria\n\n- [ ] New issue created with template\n- [ ] Issue receives `status/needs-triage` label\n- [ ] Template fields capture required information\n\n## Out of Scope\n\n- Complex triage automation\n- Multiple template routing"
+      },
+      {
+        "title": "[Tracer Bullet] Create initial PRD tracking issue\n",
+        "labels": ["status/ready-for-human", "type/setup", "scope/docs"],
+        "body": "## Problem Statement\n\nPRD exists as markdown file but needs to be tracked in GitHub issues.\n\n## Solution\n\nBreak PRD into implementable issues using tracer-bullet approach.\n\n## Implementation Scope\n\n1. Read `PRD.md` completely\n2. Identify Phase 0 foundational items\n3. Create issues for each tracer bullet\n4. Apply appropriate labels\n\n## Acceptance Criteria\n\n- [ ] PRD sections mapped to issues\n- [ ] Each issue has clear acceptance criteria\n- [ ] Issues follow tdd skill workflow\n\n## Out of Scope\n\n- Implementing features from PRD\n- Creating detailed test plans"
+      },
+      {
+        "title": "[Tracer Bullet] Verify repository labels match triage state machine\n",
+        "labels": ["status/ready-for-agent", "type/test", "scope/testing"],
+        "body": "## Trace Path\n\nCompare repository labels against triage state machine definitions.\n\n## Test Assertion\n\nAll required labels exist with correct colors and descriptions.\n\n## Implementation Scope\n\n1. Define state labels: `status/needs-triage`, `status/needs-info`, `status/ready-for-agent`, `status/ready-for-human`, `status/wontfix`\n2. Define type labels: `type/setup`, `type/feature`, `type/bug`, `type/test`, `type/refactor`, `type/documentation`, `type/tracer-bullet`\n3. Define priority labels: `priority/critical`, `priority/high`, `priority/medium`, `priority/low`\n4. Define scope labels: `scope/backend`, `scope/frontend`, `scope/cli`, `scope/infrastructure`, `scope/testing`, `scope/docs`, `scope/adr`, `scope/migration`, `scope/security`, `scope/performance`, `scope/compatibility`, `scope/monitoring`\n\n## Acceptance Criteria\n\n- [ ] State labels match triage skill definition\n- [ ] Type labels cover all categories\n- [ ] Priority labels defined\n- [ ] Scope labels defined\n\n## Out of Scope\n\n- Dynamic label creation\n- Label synchronization workflows"
+      }
+    ]
+  }
+}
