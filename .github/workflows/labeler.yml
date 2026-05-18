@@ -1,0 +1,19 @@
+name: Labeler
+
+on:
+  pull_request_target:
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+jobs:
+  labeler:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - uses: actions/labeler@v5
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          sync-labels: true

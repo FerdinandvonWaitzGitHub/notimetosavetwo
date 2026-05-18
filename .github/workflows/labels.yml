@@ -1,0 +1,130 @@
+name: Configure Triage Labels
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/labels.yml'
+
+jobs:
+  setup-labels:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure labels
+        uses: megaloc/labeler-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          set-labels: true
+          labels: |
+            -
+              name: type/setup
+              color: "9575CD"
+              description: Repository infrastructure, labels, workflows
+            -
+              name: type/feature
+              color: "4CAF50"
+              description: New functionality from PRD
+            -
+              name: type/bug
+              color: "F44336"
+              description: Something is broken
+            -
+              name: type/test
+              color: "2196F3"
+              description: Test coverage, test infrastructure
+            -
+              name: type/refactor
+              color: "FF9800"
+              description: Code quality improvements
+            -
+              name: type/documentation
+              color: "00BCD4"
+              description:Docs updates
+            -
+              name: status/needs-triage
+              color: "FFEB3B"
+              description: Awaiting maintainer evaluation
+            -
+              name: status/needs-info
+              color: "FFA726"
+              description: Waiting on reporter for more information
+            -
+              name: status/ready-for-agent
+              color: "8BC34A"
+              description: Fully specified, ready for agent implementation
+            -
+              name: status/ready-for-human
+              color: "673AB7"
+              description: Needs human implementation
+            -
+              name: status/wontfix
+              color: "9E9E9E"
+              description: Will not be actioned
+            -
+              name: priority/critical
+              color: "D32F2F"
+              description: Blocking release or major feature
+            -
+              name: priority/high
+              color: "F44336"
+              description: Important for user experience
+            -
+              name: priority/medium
+              color: "FF9800"
+              description: Nice to have
+            -
+              name: priority/low
+              color: "CDDC39"
+              description: Enhancement, minor fix
+            -
+              name: scope/backend
+              color: "3F51B5"
+              description: Server-side, API, database
+            -
+              name: scope/frontend
+              color: "03A9F4"
+              description: Studio UI, frontend
+            -
+              name: scope/cli
+              color: "8BC34A"
+              description: Command-line interface
+            -
+              name: scope/infrastructure
+              color: "607D8B"
+              description: Docker, compose, deployment
+            -
+              name: scope/testing
+              color: "E91E63"
+              description: Test suites, coverage
+            -
+              name: scope/docs
+              color: "795548"
+              description: Documentation updates
+            -
+              name: scope/adr
+              color: "673AB7"
+              description: Architecture decision records
+            -
+              name: scope/migration
+              color: "FF5722"
+              description: Database migrations
+            -
+              name: scope/security
+              color: "F44336"
+              description: Security-related changes
+            -
+              name: scope/performance
+              color: "FFC107"
+              description: Performance improvements
+            -
+              name: scope/compatibility
+              color: "009688"
+              description: Supabase compatibility
+            -
+              name: scope/monitoring
+              color: "9C27B0"
+              description: Logging, metrics, alerting
